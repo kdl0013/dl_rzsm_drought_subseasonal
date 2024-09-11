@@ -1,0 +1,40 @@
+With the new download directly from NCAR, the tmax and tmin need to be seperately opened and then we choose the forecast_initial_time variable with the highest/lowest value. Then resave.
+
+
+for example in python
+
+
+>>> import xarray as xr
+a>>> a=xr.open_dataset('maximum_2m_temperature_merged.nc4')
+>>> a
+<xarray.Dataset>
+Dimensions:                     (forecast_initial_time: 9374, bnds: 2,
+                                 longitude: 461, latitude: 285,
+                                 forecast_hour: 12)
+Coordinates:
+  * forecast_initial_time       (forecast_initial_time) datetime64[ns] 1999-0...
+  * longitude                   (longitude) float64 62.0 62.25 ... 176.8 177.0
+  * latitude                    (latitude) float64 77.0 76.75 76.5 ... 6.25 6.0
+  * forecast_hour               (forecast_hour) int32 1 2 3 4 5 6 7 8 9 10 11 12
+Dimensions without coordinates: bnds
+Data variables:
+    forecast_initial_time_bnds  (forecast_initial_time, bnds) datetime64[ns] ...
+    MX2T                        (forecast_initial_time, forecast_hour, latitude, longitude) float32 ...
+Attributes:
+    CDI:                  Climate Data Interface version 2.3.0 (https://mpime...
+    Conventions:          CF-1.6
+    DATA_SOURCE:          ECMWF: https://cds.climate.copernicus.eu, Copernicu...
+    NETCDF_CONVERSION:    CISL RDA: Conversion from ECMWF GRIB1 data to netCDF4.
+    NETCDF_VERSION:       4.6.3
+    CONVERSION_PLATFORM:  Linux r1i0n2 4.12.14-94.41-default #1 SMP Wed Oct 3...
+    CONVERSION_DATE:      Sat Jul 20 09:22:48 MDT 2019
+    NETCDF_COMPRESSION:   NCO: Precision-preserving compression to netCDF4/HD...
+    history:              Sat Feb 24 11:18:27 2024: cdo mergetime 728473.MN2T...
+    NCO:                  netCDF Operators version 5.1.6 (Homepage = http://n...
+    frequency:            day
+    CDO:                  Climate Data Operators version 2.3.0 (https://mpime...
+>>> a.max(dim='forecast_hour')
+
+
+
+
