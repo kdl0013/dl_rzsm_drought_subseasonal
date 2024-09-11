@@ -10,3 +10,5 @@ The jupyter notebooks are expected to be run in order to produce the desired dat
 ECWMF began migrating their data to a new source (https://apps.ecmwf.int/datasets/data/s2s/levtype=sfc/type=cf/). This means that the download scripts may not work anymore after July 2024.
 
 GEFSv12 data is downloaded from source https://aws.amazon.com/marketplace/pp/prodview-ae4rze4k5yi74. 
+
+Link to the publication will be provided after peer-review process. 
